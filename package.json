@@ -1,0 +1,33 @@
+{
+  "name": "callify",
+  "version": "0.0.0",
+  "description": "Create browserify transforms that change or inline external module function calls",
+  "main": "index.js",
+  "scripts": {
+    "test": "tap test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mmckegg/callify"
+  },
+  "keywords": [
+    "browserify",
+    "inline",
+    "brfs",
+    "transform",
+    "precompile"
+  ],
+  "dependencies": {
+    "through": "2.x",
+    "falafel": "0.x"
+  },
+  "devDependencies": {
+    "static-eval": "*",
+    "tape": "*"
+  },
+  "author": "Matt McKegg",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mmckegg/callify/issues"
+  }
+}
