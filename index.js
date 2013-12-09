@@ -1,5 +1,6 @@
 var Through = require('through')
 var falafel = require('falafel')
+var syntaxError = require('syntax-error')
 
 module.exports = function(transforms){
   return function( file ){
@@ -11,7 +12,11 @@ module.exports = function(transforms){
     return Through(function(data){ 
       content += data 
     }, function(){
-      this.queue(transform(content, file))
+      try {
+        this.queue(transform(content, file))
+      } catch (ex){
+        this.emit('error', syntaxError(content, file))
+      }
       this.queue(null)
     })
 

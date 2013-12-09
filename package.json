@@ -19,7 +19,9 @@
   ],
   "dependencies": {
     "through": "2.x",
-    "falafel": "0.x"
+    "falafel": "0.x",
+    "syntax-error": "0.0.1",
+    "esprima": "~1.0"
   },
   "devDependencies": {
     "static-eval": "*",
