@@ -15,7 +15,8 @@ module.exports = function(transforms){
       try {
         this.queue(transform(content, file))
       } catch (ex){
-        this.emit('error', syntaxError(content, file))
+        var error = syntaxError(content, file) || ex
+        this.emit('error', error)
       }
       this.queue(null)
     })
