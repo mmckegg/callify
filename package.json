@@ -1,6 +1,6 @@
 {
   "name": "callify",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Create browserify transforms that change or inline external module function calls",
   "main": "index.js",
   "scripts": {
