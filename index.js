@@ -9,27 +9,27 @@ module.exports = function(transforms){
 
     var content = ''
 
-    return Through(function(data){ 
-      content += data 
-    }, function(){
+    var tr = Through(write, end)
+
+    function write(data){
+      content += data
+    }
+
+    function end(){
       try {
-        this.queue(transform(content, file))
+        tr.queue(transform(content, file, tr))
       } catch (ex){
         var error = syntaxError(content, file) || ex
-        this.emit('error', error)
+        tr.emit('error', error)
       }
-      this.queue(null)
-    })
+      tr.queue(null)
+    }
 
+    return tr
   }
 
-  function transform(content, file){
+  function transform(content, file, stream){
     var requires = {}
-
-    var params = {
-      file: file,
-      requires: requires
-    }
 
     return falafel(content, function(node){
 
@@ -43,9 +43,9 @@ module.exports = function(transforms){
       // transform calls
       var calls; if (calls = isCall(node)){
         if (calls[0] in requires){
-          var transform = transforms[requires[calls[0]]]
-          if (typeof transform === 'function'){
-            transform(node, {file: file, requires: requires, calls: calls})
+          var func = transforms[requires[calls[0]]]
+          if (typeof func === 'function'){
+            func(node, {file: file, requires: requires, calls: calls, stream: stream})
           }
         }
       }
