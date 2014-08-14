@@ -20,7 +20,7 @@
   "dependencies": {
     "through": "2.x",
     "falafel": "0.x",
-    "syntax-error": "0.0.1",
+    "syntax-error": "1.1.1",
     "esprima": "~1.0"
   },
   "devDependencies": {
