@@ -4,7 +4,7 @@
   "description": "Create browserify transforms that change or inline external module function calls",
   "main": "index.js",
   "scripts": {
-    "test": "tap test/*.js"
+    "test": "tape test/*.js"
   },
   "repository": {
     "type": "git",
@@ -18,10 +18,10 @@
     "precompile"
   ],
   "dependencies": {
-    "through": "2.x",
-    "falafel": "0.x",
-    "syntax-error": "1.1.1",
-    "esprima": "~1.0"
+    "esprima": "^1.2.2",
+    "falafel": "^0.3.1",
+    "syntax-error": "^1.1.1",
+    "through": "^2.3.4"
   },
   "devDependencies": {
     "static-eval": "*",
