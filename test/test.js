@@ -11,7 +11,6 @@ test("replace fs.readFileSync calls with file content", function(t){
     'fs': function(node, params){
       if (params.calls[1] === 'readFileSync'){
         var args = getArgs(node, params)
-        console.log(args)
         var content = readFileSync.apply(this, args)
         node.update(JSON.stringify(content))
       }
